@@ -53,14 +53,16 @@ export function TelaLogin() {
           </TouchableOpacity>
         </View>
 
-        <View >
-          <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}>
-             <Text> Entrar </Text>
-          </TouchableOpacity>
-        </View>
+        <Image source={require('C:/Users/NATALIA/MeuProjetoApp/assets/IMG/onda1.png')} style={styles.ondaImage} />        
 
-        <Image source={require('C:/Users/NATALIA/MeuProjetoApp/assets/IMG/onda1.png')} style={styles.ondaImage} />
-
+        {/* Botão de login transparente */}
+        <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}
+          style={[styles.loginButton, isPressed && styles.loginButtonPressed]}
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+        >
+          <Text style={[styles.loginButtonText, isPressed && styles.loginButtonTextPressed]}>Login</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
     width: 460,
     height: 200,
     position: 'absolute',
-    top: 209,
+    top: 220,
     right: -10,
   },
 
@@ -198,10 +200,6 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderColor: '#fff',
     borderWidth: 1,
-    shadowColor: "#000",          // Efeito de sombra para IOS 
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     elevation: 20,      // Efeito de sombra para Android, limitado comparado com o do IOS           
   },                    // uma linhazinha veia podi não gostei muito do resultado
                         // vou ver se vou manter
