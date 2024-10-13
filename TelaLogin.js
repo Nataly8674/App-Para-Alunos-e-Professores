@@ -18,7 +18,7 @@ export function TelaLogin() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('./assets/IMG/TelaHorarioAulas/RecorteLogo2.png')} style={styles.headerImage} />
+        <Image source={require('./assets/IMG/RecorteLogo2.png')} style={styles.headerImage} />
       </View>
       <View style={styles.rectanglesContainer}>
         <View style={styles.retangulo1} />
@@ -26,8 +26,8 @@ export function TelaLogin() {
         <View style={styles.retangulo3} />
       </View>
       <View style={styles.imagesContainer}>
-        <Image source={require('./assets/IMG/TelaHorarioAulas/logoOk-removebg-preview.png')} style={styles.image1} />
-        <Image source={require('./assets/IMG/TelaHorarioAulas/Captura_de_tela_2024-10-11_011645-removebg-preview.png')} style={styles.image2} />
+        <Image source={require('./assets/IMG/logoOk-removebg-preview.png')} style={styles.image1} />
+        <Image source={require('./assets/IMG/Captura_de_tela_2024-10-11_011645-removebg-preview.png')} style={styles.image2} />
       </View>
       <View style={[styles.loginContainer, isFocused && styles.loginContainerFocused]}>
         <Text style={styles.loginText}>Login</Text>
@@ -56,20 +56,10 @@ export function TelaLogin() {
         <View >
           <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}>
              <Text> Entrar </Text>
-          </TouchableOpacity> {/*Erro Ajeitar*/}
-        </View>
-        
-
-        <View
-          style={[styles.loginButton, isPressed && styles.loginButtonPressed]}
-          onPressIn={handlePressIn}
-          onPressOut={handlePressOut}
-        >
-          <Text style={[styles.loginButtonText, isPressed && styles.loginButtonTextPressed]}>Login</Text>
+          </TouchableOpacity>
         </View>
 
-      
-        <Image source={require('C:/Users/NATALIA/MeuProjetoApp/assets/IMG/TelaHorarioAulas/onda1.png')} style={styles.ondaImage} />
+        <Image source={require('C:/Users/NATALIA/MeuProjetoApp/assets/IMG/onda1.png')} style={styles.ondaImage} />
 
       </View>
     </View>
