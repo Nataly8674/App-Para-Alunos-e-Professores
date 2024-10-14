@@ -55,7 +55,6 @@ export function TelaLogin() {
 
         <Image source={require('C:/Users/NATALIA/MeuProjetoApp/assets/IMG/onda1.png')} style={styles.ondaImage} />        
 
-        {/* Botão de login transparente */}
         <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}
           style={[styles.loginButton, isPressed && styles.loginButtonPressed]}
           onPressIn={handlePressIn}

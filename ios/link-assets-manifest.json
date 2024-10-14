@@ -76,6 +76,14 @@
     {
       "path": "assets/fonts/Nunito-Italic-VariableFont_wght.ttf",
       "sha1": "0b4c3a612cf31e069014ede3a502381c034fc736"
+    },
+    {
+      "path": "assets/fonts/QwitcherGrypen-Regular.ttf",
+      "sha1": "209c9c490b145355f9de5bc794b971ad9f5f746e"
+    },
+    {
+      "path": "assets/fonts/Qwitcher_Grypen/QwitcherGrypen-Bold.ttf",
+      "sha1": "2b4c45881827a93c7ac4bd22667848df39f45fd8"
     }
   ]
 }

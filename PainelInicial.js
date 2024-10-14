@@ -1,11 +1,12 @@
 // PainelInicial.js
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, natigation } from 'react-native';
 
-export default function PainelInicial() {
+export default function PainelInicial({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem-vindo ao Painel Inicial!</Text>
+      
     </View>
   );
 }
