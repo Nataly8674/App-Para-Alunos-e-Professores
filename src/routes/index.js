@@ -24,6 +24,7 @@ export function AppRoutes() {
       <Screen name='TelaChamada' component={TelaChamada}/>
     </Navigator>
   );
+  
 }
 
 
