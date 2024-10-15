@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,14 +23,19 @@ public class Conteudo_ministrado implements Serializable{
 	private LocalDate data;
 	private String descricao;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_horario")
+	private Horario horario;
+	
 	public Conteudo_ministrado() {
 		
 	}
 
-	public Conteudo_ministrado(Long id_conteudo, LocalDate data, String descricao) {
+	public Conteudo_ministrado(Long id_conteudo, LocalDate data, String descricao, Horario horario) {
 		this.id_conteudo = id_conteudo;
 		this.data = data;
 		this.descricao = descricao;
+		this.horario = horario;
 	}
 
 	public Long getId_conteudo() {
@@ -53,6 +60,14 @@ public class Conteudo_ministrado implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
 
 	@Override

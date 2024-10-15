@@ -1,6 +1,8 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.seducapp.gerenciadordeaulas.enums.Grau_ensino;
@@ -12,6 +14,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +30,8 @@ public class Serie implements Serializable{
 	@Column(name = "grau_ensino")
 	private Grau_ensino grau_ensino;
 	
+	@OneToMany(mappedBy = "serie")
+	private List<Turma> turma = new ArrayList<>();
 	
 	public Serie() {
 		
@@ -67,6 +72,10 @@ public class Serie implements Serializable{
 
 	public void setGrau_ensino(Grau_ensino grau_ensino) {
 		this.grau_ensino = grau_ensino;
+	}
+
+	public List<Turma> getTurma() {
+		return turma;
 	}
 
 

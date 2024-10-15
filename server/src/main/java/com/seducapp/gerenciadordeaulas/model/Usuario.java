@@ -1,6 +1,8 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.seducapp.gerenciadordeaulas.enums.Tipo_usuario;
@@ -12,6 +14,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +32,12 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo_usuario")
 	private Tipo_usuario tipo_usuario;
+	
+	@OneToMany(mappedBy = "usuario")
+	private  List<Aluno> alunos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Professor> professores = new ArrayList<>();
 	
 	public Usuario() {
 		
@@ -88,6 +97,14 @@ public class Usuario implements Serializable{
 
 	public void setTipo_usuario(Tipo_usuario tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
+	}
+	
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public List<Professor> getProfessores() {
+		return professores;
 	}
 
 	@Override

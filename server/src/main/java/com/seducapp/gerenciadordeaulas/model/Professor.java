@@ -1,12 +1,17 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,14 +25,22 @@ public class Professor implements Serializable{
 	private String nome;
 	private String telefone;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
+	 @OneToMany(mappedBy = "professor")
+	    private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();		
+	
 	public Professor() {
 		
 	}
 	
-	public Professor(Long id_professor, String nome, String telefone) {
+	public Professor(Long id_professor, String nome, String telefone, Usuario usuario) {
 		this.id_professor = id_professor;
 		this.nome = nome;
 		this.telefone = telefone;
+		this.usuario = usuario;
 	}
 
 	public Long getId_professor() {
@@ -52,6 +65,14 @@ public class Professor implements Serializable{
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

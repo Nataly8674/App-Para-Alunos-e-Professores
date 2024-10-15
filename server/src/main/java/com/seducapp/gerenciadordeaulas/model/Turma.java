@@ -1,12 +1,19 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,13 +26,29 @@ public class Turma implements Serializable{
 	private Long id_turma;
 	private String nome_turma;
 	
+	@OneToMany(mappedBy = "turma")
+	private List<Aluno> alunos = new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "id_modalidade")
+	private Modalidades modalidade;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_serie")
+	private Serie serie;
+	
+	@OneToMany(mappedBy = "id.turma")
+	private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();
+	
 	public Turma() {
 		
 	}
 
-	public Turma(Long id_turma, String nome_turma) {
+	public Turma(Long id_turma, String nome_turma, Modalidades modalidade, Serie serie) {
 		this.id_turma = id_turma;
 		this.nome_turma = nome_turma;
+		this.modalidade = modalidade;
+		this.serie = serie;
 	}
 
 	public Long getId_turma() {
@@ -42,6 +65,30 @@ public class Turma implements Serializable{
 
 	public void setNome_turma(String nome_turma) {
 		this.nome_turma = nome_turma;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+	
+	public Modalidades getModalidade() {
+		return modalidade;
+	}
+
+	public void setModalidade(Modalidades modalidade) {
+		this.modalidade = modalidade;
+	}
+
+	public Serie getSerie() {
+		return serie;
+	}
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
+	}
+
+	public Set<Turma_disciplina> getTurma_disciplinas() {
+		return turma_disciplinas;
 	}
 
 	@Override

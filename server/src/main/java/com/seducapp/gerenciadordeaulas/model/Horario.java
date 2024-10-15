@@ -2,6 +2,8 @@ package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.seducapp.gerenciadordeaulas.enums.Dia_semana;
@@ -13,6 +15,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +31,12 @@ public class Horario implements Serializable{
 	private Dia_semana dia_semana;
 	private LocalTime hora_inicio;
 	private LocalTime hora_fim;
+	
+	@OneToMany(mappedBy = "horario")
+	private List <Conteudo_ministrado> conteudos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "horario")
+	private List<Chamada> chamadas = new ArrayList<>();
 	
 	public Horario() {
 		

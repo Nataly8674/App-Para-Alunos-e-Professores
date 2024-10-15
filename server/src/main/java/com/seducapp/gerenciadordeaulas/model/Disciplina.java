@@ -1,12 +1,15 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +21,9 @@ public class Disciplina implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_disciplina;
 	private String nome_disciplina;
+	
+	@OneToMany(mappedBy = "id.disciplina")
+	private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();
 	
 	public Disciplina() {
 		
@@ -42,6 +48,10 @@ public class Disciplina implements Serializable{
 
 	public void setNome_disciplina(String nome_disciplina) {
 		this.nome_disciplina = nome_disciplina;
+	}
+
+	public Set<Turma_disciplina> getDisciplinas() {
+		return turma_disciplinas;
 	}
 
 	@Override

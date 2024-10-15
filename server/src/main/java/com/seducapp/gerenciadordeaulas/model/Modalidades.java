@@ -1,6 +1,8 @@
 package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.seducapp.gerenciadordeaulas.enums.ModalidadesEnum;
@@ -12,6 +14,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +28,10 @@ public class Modalidades implements Serializable{
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo")
 	private ModalidadesEnum tipo;
+	
+	@OneToMany(mappedBy = "modalidade")
+	private List<Turma> turma = new ArrayList<>();
+	
 	
 	public Modalidades() {
 		
@@ -54,6 +61,10 @@ public class Modalidades implements Serializable{
 	@Override
 	public int hashCode() {
 		return Objects.hash(id_modalidade);
+	}
+
+	public List<Turma> getTurma() {
+		return turma;
 	}
 
 	@Override

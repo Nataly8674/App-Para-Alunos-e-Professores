@@ -2,12 +2,17 @@ package com.seducapp.gerenciadordeaulas.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,13 +25,21 @@ public class Chamada implements Serializable{
 	private Long id_chamada;
 	private LocalDate data;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_horario")
+	private Horario horario;
+	
+	@ManyToMany(mappedBy = "chamadas")
+	private Set<Aluno> alunos = new HashSet<>();
+	
 	public Chamada() {
 		
 	}
 	
-	public Chamada(Long id_chamada, LocalDate data) {
+	public Chamada(Long id_chamada, LocalDate data, Horario horario) {
 		this.id_chamada = id_chamada;
 		this.data = data;
+		this.horario = horario;
 	}
 
 	public Long getId_chamada() {
@@ -43,6 +56,14 @@ public class Chamada implements Serializable{
 
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
 
 	@Override
