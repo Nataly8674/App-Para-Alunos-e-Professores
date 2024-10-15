@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient'; // Importando o LinearGradient
+import LinearGradient from 'react-native-linear-gradient';
 
-const { width } = Dimensions.get('window'); // Importando as dimensões da tela
+const { width } = Dimensions.get('window');
 
 export default function HorarioAulas({ navigation }) {
-  const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar expansão da caixa
+  const [isExpanded, setIsExpanded] = useState(false); // Controlando a expansão da caixa
 
   return (
     <View style={styles.container}>
@@ -15,7 +15,7 @@ export default function HorarioAulas({ navigation }) {
         <View style={styles.headerContent}>
           <Text style={styles.textoHeader}>Horário das Aulas</Text>
           <TouchableOpacity onPress={() => navigation.navigate("PainelInicial")}>
-            <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/seta1.png')} style={[styles.seta]} />
+            <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/seta1.png')} style={[styles.seta]} />
           </TouchableOpacity>
         </View>
       </View>
@@ -38,7 +38,7 @@ export default function HorarioAulas({ navigation }) {
           </Text>
         </TouchableOpacity>
 
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/ImgLivro.png')} style={[styles.ImgLivro]} />
+        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/ImgLivro.png')} style={[styles.ImgLivro]} />
 
         {/* Conteúdo oculto */}
         {isExpanded && (

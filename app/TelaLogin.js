@@ -18,7 +18,7 @@ export function TelaLogin() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/RecorteLogo2.png')} style={styles.headerImage} />
+        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/RecorteLogo2.png')} style={styles.headerImage} />
       </View>
       <View style={styles.rectanglesContainer}>
         <View style={styles.retangulo1} />
@@ -26,8 +26,8 @@ export function TelaLogin() {
         <View style={styles.retangulo3} />
       </View>
       <View style={styles.imagesContainer}>
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/logoOk-removebg-preview.png')} style={styles.image1} />
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/Captura_de_tela_2024-10-11_011645-removebg-preview.png')} style={styles.image2} />
+        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/logoOk-removebg-preview.png')} style={styles.image1} />
+        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/Captura_de_tela_2024-10-11_011645-removebg-preview.png')} style={styles.image2} />
       </View>
       <View style={[styles.loginContainer, isFocused && styles.loginContainerFocused]}>
         <Text style={styles.loginText}>Login</Text>
@@ -53,7 +53,7 @@ export function TelaLogin() {
           </TouchableOpacity>
         </View>
 
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/onda1.png')} style={styles.ondaImage} />        
+        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/app/assets/IMG/onda1.png')} style={styles.ondaImage} />        
 
         <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}
           style={[styles.loginButton, isPressed && styles.loginButtonPressed]}
