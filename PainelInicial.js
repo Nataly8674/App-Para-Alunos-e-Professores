@@ -14,7 +14,7 @@ export default function HorarioAulas({ navigation }) {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <Text style={styles.textoHeader}>Painel Inicial</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("HorarioAulas")}>
+          <TouchableOpacity onPress={() => navigation.navigate("TelaLogin")}>
             <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/seta1.png')} style={[styles.Seta]} />
           </TouchableOpacity>
         </View>
@@ -27,13 +27,14 @@ export default function HorarioAulas({ navigation }) {
       </View>
 
       {/*Caixa Materia 1*/}
-      <View style={[styles.caixaMateria1, isExpanded && styles.caixaMateria1Expandida]}>
-        <Text style={styles.textoMateria1}>Horários</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("HorarioAulas")}>
+        <View style={[styles.caixaMateria1, isExpanded && styles.caixaMateria1Expandida]}>
+          <Text style={styles.textoMateria1}>Horários das Aulas</Text>
+    
+          <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/Calendario.png')} style={[styles.ImgCalendario]} />
 
-        <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/ImgLivro.png')} style={[styles.ImgCalendario]} />
-
-      </View>
-
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -97,24 +98,27 @@ const styles = StyleSheet.create({
     height: 80, 
     width: 300,
     borderRadius: 10,
-    bottom: 260,
-    overflow: 'hidden', 
+    bottom: 290,
+    overflow: 'hidden',
+    borderColor: 'black',
+    borderWidth: 1,
   },
 
   textoMateria1: {
     fontSize: 22,
     color: '#0073e6',
-    marginTop: 10,
+    marginTop: 23,
+    left: 20,
     textAlign: 'center',
     fontFamily: 'Nunito-VariableFont_wght',
-    right: 28,
+    borderRadius: 10,
   },
 
 
   ImgCalendario: { /*Substituir por calendario*/ 
-    width: 55,
-    height: 55,
-    bottom: 75,
+    width: 70,
+    height: 70,
+    bottom: 45,
     left: 5,
   },
 
