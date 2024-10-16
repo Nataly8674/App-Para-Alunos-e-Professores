@@ -55,7 +55,7 @@ export function TelaLogin() {
 
         <Image source={require('D:/Repositorios Git Hub/App-Para-Alunos-e-Professores/assets/IMG/onda1.png')} style={styles.ondaImage} />        
 
-        <TouchableOpacity onPress={()=>navigation.navigate("HorarioAulas")}
+        <TouchableOpacity onPress={()=>navigation.navigate("PainelInicial")}
           style={[styles.loginButton, isPressed && styles.loginButtonPressed]}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
