@@ -1,1 +1,1 @@
-sdk.dir=C\:\\Users\\NATALIA\\AppData\\Local\\Android\\Sdk
+sdk.dir=C:/Users/mathe/AppData/Local/Android/Sdk
