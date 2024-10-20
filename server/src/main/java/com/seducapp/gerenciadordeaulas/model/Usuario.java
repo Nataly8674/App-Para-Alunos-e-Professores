@@ -43,12 +43,12 @@ public class Usuario implements Serializable{
 		
 	}
 
-	public Usuario(Long id_usuario, String nome, String email, String senha, Tipo_usuario tipo_usuario) {
+	public Usuario(Long id_usuario, String nome, String email, String senha, String tipo_usuario) {
 		this.id_usuario = id_usuario;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.tipo_usuario = tipo_usuario;
+		this.tipo_usuario = Tipo_usuario.fromString(tipo_usuario);
 	}
 
 	public Long getId_usuario() {
@@ -95,8 +95,8 @@ public class Usuario implements Serializable{
 		return tipo_usuario;
 	}
 
-	public void setTipo_usuario(Tipo_usuario tipo_usuario) {
-		this.tipo_usuario = tipo_usuario;
+	public void setTipo_usuario(String tipo_usuario) {
+		this.tipo_usuario = Tipo_usuario.fromString(tipo_usuario);
 	}
 	
 	public List<Aluno> getAlunos() {
