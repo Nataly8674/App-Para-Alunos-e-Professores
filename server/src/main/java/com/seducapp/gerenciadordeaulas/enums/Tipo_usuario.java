@@ -22,4 +22,12 @@ public enum Tipo_usuario {
 		}
 		throw new IllegalArgumentException("Invalid ModalidadesEnum code!");
 	}
+	
+	public static Tipo_usuario fromString(String tipo) {
+        try {
+            return Tipo_usuario.valueOf(tipo.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid Tipo_usuario value: " + tipo);
+        }
+    }
 }
