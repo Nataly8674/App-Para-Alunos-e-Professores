@@ -38,10 +38,10 @@ public class Serie implements Serializable{
 	}
 
 
-	public Serie(Long id_serie, Integer numero_serie, Grau_ensino grau_ensino) {
+	public Serie(Long id_serie, Integer numero_serie, String grau_ensino) {
 		this.id_serie = id_serie;
 		this.numero_serie = numero_serie;
-		this.grau_ensino = grau_ensino;
+		this.grau_ensino = Grau_ensino.fromString(grau_ensino);
 	}
 
 
@@ -70,8 +70,8 @@ public class Serie implements Serializable{
 	}
 
 
-	public void setGrau_ensino(Grau_ensino grau_ensino) {
-		this.grau_ensino = grau_ensino;
+	public void setGrau_ensino(String grau_ensino) {
+		this.grau_ensino = Grau_ensino.fromString(grau_ensino);
 	}
 
 	public List<Turma> getTurma() {
