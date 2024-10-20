@@ -24,6 +24,7 @@ public class Chamada implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_chamada;
 	private LocalDate data;
+	private Character presença; 
 	
 	@ManyToOne
 	@JoinColumn(name = "id_horario")
@@ -56,6 +57,14 @@ public class Chamada implements Serializable{
 
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public Character getPresença() {
+		return presença;
+	}
+
+	public void setPresença(Character presença) {
+		this.presença = presença;
 	}
 
 	public Horario getHorario() {
