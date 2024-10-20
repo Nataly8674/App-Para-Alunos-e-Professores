@@ -42,9 +42,9 @@ public class Horario implements Serializable{
 		
 	}
 	
-	public Horario(Long id_horario, Dia_semana dia_semana, LocalTime hora_inicio, LocalTime hora_fim) {
+	public Horario(Long id_horario, String dia_semana, LocalTime hora_inicio, LocalTime hora_fim) {
 		this.id_horario = id_horario;
-		this.dia_semana = dia_semana;
+		this.dia_semana = Dia_semana.fromString(dia_semana);
 		this.hora_inicio = hora_inicio;
 		this.hora_fim = hora_fim;
 	}
@@ -61,8 +61,8 @@ public class Horario implements Serializable{
 		return dia_semana;
 	}
 
-	public void setDia_semana(Dia_semana dia_semana) {
-		this.dia_semana = dia_semana;
+	public void setDia_semana(String dia_semana) {
+		this.dia_semana = Dia_semana.fromString(dia_semana);
 	}
 
 	public LocalTime getHora_inicio() {
