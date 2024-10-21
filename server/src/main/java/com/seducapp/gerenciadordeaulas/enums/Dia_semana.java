@@ -27,4 +27,12 @@ public enum Dia_semana {
 		}
 		throw new IllegalArgumentException("Invalid ModalidadesEnum code!");
 	}
+	
+	public static Dia_semana fromString(String dia) {
+        try {
+            return Dia_semana.valueOf(dia.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid Dia_semana value: " + dia);
+        }
+    }
 }

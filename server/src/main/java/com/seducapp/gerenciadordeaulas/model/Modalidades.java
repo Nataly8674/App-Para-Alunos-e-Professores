@@ -1,83 +1,67 @@
 package com.seducapp.gerenciadordeaulas.model;
 
+import com.seducapp.gerenciadordeaulas.enums.ModalidadesEnum;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.seducapp.gerenciadordeaulas.enums.ModalidadesEnum;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "modalidades")
-public class Modalidades implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Modalidades implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_modalidade;
-	@Enumerated(EnumType.STRING)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_modalidade;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-	private ModalidadesEnum tipo;
-	
-	@OneToMany(mappedBy = "modalidade")
-	private List<Turma> turma = new ArrayList<>();
-	
-	
-	public Modalidades() {
-		
-	}
+    private ModalidadesEnum tipo;
 
-	public Modalidades(Long id_modalidade, ModalidadesEnum tipo) {
-		this.id_modalidade = id_modalidade;
-		this.tipo = tipo;
-	}
+    @OneToMany(mappedBy = "modalidade")
+    private List<Turma> turma = new ArrayList<>();
 
-	public Long getId_modalidade() {
-		return id_modalidade;
-	}
+    public Modalidades() {}
 
-	public void setId_modalidades(Long id_modalidades) {
-		this.id_modalidade = id_modalidades;
-	}
+    public Modalidades(Long id_modalidade, String tipo) {
+        this.id_modalidade = id_modalidade;
+        this.tipo = ModalidadesEnum.fromString(tipo);
+    }
 
-	public ModalidadesEnum getTipo() {
-		return tipo;
-	}
+    public Long getId_modalidade() {
+        return id_modalidade;
+    }
 
-	public void setTipo(ModalidadesEnum tipo_modalidades) {
-		this.tipo= tipo_modalidades;
-	}
+    public void setId_modalidade(Long id_modalidade) {
+        this.id_modalidade = id_modalidade;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id_modalidade);
-	}
+    public ModalidadesEnum getTipo() {
+        return tipo;
+    }
 
-	public List<Turma> getTurma() {
-		return turma;
-	}
+    public void setTipo(String tipo) {
+        this.tipo = ModalidadesEnum.fromString(tipo);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Modalidades other = (Modalidades) obj;
-		return Objects.equals(id_modalidade, other.id_modalidade);
-	}
-	
-	
+    public List<Turma> getTurma() {
+        return turma;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_modalidade);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Modalidades other = (Modalidades) obj;
+        return Objects.equals(id_modalidade, other.id_modalidade);
+    }
 }

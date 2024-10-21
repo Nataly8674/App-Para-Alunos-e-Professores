@@ -12,9 +12,9 @@ import com.seducapp.gerenciadordeaulas.repository.AlunoRepository;
 public class AlunoService {
 	
 	@Autowired
-	private AlunoRepository aluno;
+	private AlunoRepository alunoRepository;
 	
 	public List<Aluno> findall() {
-		return aluno.findAll();
+		return alunoRepository.findAll();
 	}
 }

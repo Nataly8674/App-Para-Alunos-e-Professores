@@ -23,4 +23,11 @@ public enum Grau_ensino {
 		throw new IllegalArgumentException("Invalid ModalidadesEnum code!");
 	}
 	
+	public static Grau_ensino fromString(String grau) {
+        try {
+            return Grau_ensino.valueOf(grau.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid Grau_ensino value: " + grau);
+        }
+    }
 }
