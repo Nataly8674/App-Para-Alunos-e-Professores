@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +32,8 @@ public class Professor implements Serializable{
 	private Usuario usuario;
 	
 	 @OneToMany(mappedBy = "professor")
-	    private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();		
+	 @JsonIgnore
+	 private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();		
 	
 	public Professor() {
 		

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seducapp.gerenciadordeaulas.enums.Tipo_usuario;
 
 import jakarta.persistence.Column;
@@ -34,9 +35,11 @@ public class Usuario implements Serializable{
 	private Tipo_usuario tipo_usuario;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
 	private  List<Aluno> alunos = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
 	private List<Professor> professores = new ArrayList<>();
 	
 	public Usuario() {

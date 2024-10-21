@@ -1,5 +1,6 @@
 package com.seducapp.gerenciadordeaulas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seducapp.gerenciadordeaulas.enums.ModalidadesEnum;
 import jakarta.persistence.*;
 
@@ -22,6 +23,7 @@ public class Modalidades implements Serializable {
     private ModalidadesEnum tipo;
 
     @OneToMany(mappedBy = "modalidade")
+    @JsonIgnore
     private List<Turma> turma = new ArrayList<>();
 
     public Modalidades() {}

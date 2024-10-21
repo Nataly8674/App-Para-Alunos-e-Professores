@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seducapp.gerenciadordeaulas.enums.Dia_semana;
 
 import jakarta.persistence.Column;
@@ -33,9 +34,11 @@ public class Horario implements Serializable{
 	private LocalTime hora_fim;
 	
 	@OneToMany(mappedBy = "horario")
+	@JsonIgnore
 	private List <Conteudo_ministrado> conteudos = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "horario")
+	@JsonIgnore
 	private List<Chamada> chamadas = new ArrayList<>();
 	
 	public Horario() {
