@@ -70,6 +70,11 @@ public class Disciplina implements Serializable{
 		Disciplina other = (Disciplina) obj;
 		return Objects.equals(id_disciplina, other.id_disciplina);
 	}
+
+	public void setId(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

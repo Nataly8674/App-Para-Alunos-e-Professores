@@ -123,6 +123,11 @@ public class Usuario implements Serializable{
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id_usuario, other.id_usuario);
 	}
+
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
