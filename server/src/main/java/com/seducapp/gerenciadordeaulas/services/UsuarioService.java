@@ -27,8 +27,10 @@ public class UsuarioService {
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado com o CPF: " + cpf);
         }
-        return passwordEncoder.matches(password, usuario.getPassword());
+        boolean matches = passwordEncoder.matches(password, usuario.getPassword());
+        System.out.println("Verificando senha: " + matches);
+        return matches;
+
     }
 }
-
 
