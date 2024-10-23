@@ -35,7 +35,7 @@ public class DisciplinaService {
         return disciplinaRepository.save(disciplinaAtualizada);
     }
 
-    // Método para deletar uma disciplina
+    /// Método para deletar uma disciplina
     public void delete(Long id) {
         disciplinaRepository.deleteById(id);
     }
