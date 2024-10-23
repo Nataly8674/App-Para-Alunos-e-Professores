@@ -6,4 +6,6 @@ import com.seducapp.gerenciadordeaulas.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
+	Usuario findByCpf(String cpf);
+
 }
