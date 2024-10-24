@@ -20,9 +20,10 @@ public class Turma_disciplina implements Serializable{
     @JoinColumn(name = "id_Professor")
     private Professor professor;	
 
-	public Turma_disciplina(Turma turma, Disciplina disciplina) {
+	public Turma_disciplina(Turma turma, Disciplina disciplina, Professor professor) {
 		id.setTurma(turma);
 		id.setDisciplina(disciplina);
+		this.professor = professor;
 	}
 	
 	public Turma getTurma() {
@@ -33,11 +34,19 @@ public class Turma_disciplina implements Serializable{
 		id.setTurma(turma);
 	}
 	
-	public Turma getDisciplina() {
-		return id.getTurma();
+	public Disciplina getDisciplina() {
+		return id.getDisciplina();
 	}
 	
 	public void setDisciplina(Disciplina disciplina) {
 		id.setDisciplina(disciplina);
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}
 }

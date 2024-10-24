@@ -28,8 +28,12 @@ public class Usuario implements Serializable{
 	private Long id_usuario;
 	private String nome;
 	private String email;
-	private String senha;
-	private String cpf;
+	
+	@Column(unique = true, nullable = false)
+    private String cpf;
+    @Column(nullable = false)
+    private String senha;
+    
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo_usuario")
 	private Tipo_usuario tipo_usuario;

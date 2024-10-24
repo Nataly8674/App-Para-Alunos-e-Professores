@@ -12,9 +12,13 @@ import com.seducapp.gerenciadordeaulas.repository.UsuarioRepository;
 public class UsuarioService {
 	
 	@Autowired
-	private UsuarioRepository usuario;
+	private UsuarioRepository usuarioRepository;
 	
 	public List<Usuario> findall() {
-		return usuario.findAll();
+		return usuarioRepository.findAll();
+	}
+	
+	public Usuario findByCpf(String cpf) {
+		return usuarioRepository.findByCpf(cpf);
 	}
 }
