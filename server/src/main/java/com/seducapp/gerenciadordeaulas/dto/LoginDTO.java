@@ -1,7 +1,13 @@
 package com.seducapp.gerenciadordeaulas.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class LoginDTO {
+    
+    @NotBlank(message = "O CPF é obrigatório.")
     private String cpf;
+    
+    @NotBlank(message = "A senha é obrigatória.")
     private String password;
 
     // Getters e setters
