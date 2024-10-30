@@ -16,6 +16,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -41,15 +44,24 @@ public class Horario implements Serializable{
 	@JsonIgnore
 	private List<Chamada> chamadas = new ArrayList<>();
 	
+	@ManyToOne
+    @JoinColumns({
+        @JoinColumn(name = "id_turma", referencedColumnName = "id_turma"),
+        @JoinColumn(name = "id_disciplina", referencedColumnName = "id_disciplina")
+    })
+    private Turma_disciplina turma_disciplina;
+	
 	public Horario() {
 		
 	}
 	
-	public Horario(Long id_horario, String dia_semana, LocalTime hora_inicio, LocalTime hora_fim) {
+	public Horario(Long id_horario, String dia_semana, LocalTime hora_inicio, LocalTime hora_fim, Turma_disciplina turma_disciplina) {
 		this.id_horario = id_horario;
 		this.dia_semana = Dia_semana.fromString(dia_semana);
 		this.hora_inicio = hora_inicio;
 		this.hora_fim = hora_fim;
+		this.turma_disciplina.setTurma(turma_disciplina.getTurma());
+		this.turma_disciplina.setDisciplina(turma_disciplina.getDisciplina());
 	}
 
 	public Long getId_horario() {
@@ -82,6 +94,15 @@ public class Horario implements Serializable{
 
 	public void setHora_fim(LocalTime hora_fim) {
 		this.hora_fim = hora_fim;
+	}
+	
+
+	public Turma_disciplina getTurma_disciplina() {
+		return turma_disciplina;
+	}
+
+	public void setTurma_disciplina(Turma_disciplina turma_disciplina) {
+		this.turma_disciplina = turma_disciplina;
 	}
 
 	@Override
