@@ -74,5 +74,6 @@ public class HorarioService {
                 return dto;
             })
             .collect(Collectors.toList());
+        
     }
 }
