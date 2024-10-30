@@ -40,7 +40,7 @@ public class Turma implements Serializable{
 	@JoinColumn(name = "id_serie")
 	private Serie serie;
 	
-	@OneToMany(mappedBy = "id.turma")
+	@OneToMany(mappedBy = "turma")
 	@JsonIgnore
 	private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();
 	
