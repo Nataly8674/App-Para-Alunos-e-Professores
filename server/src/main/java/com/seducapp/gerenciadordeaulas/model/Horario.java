@@ -60,8 +60,7 @@ public class Horario implements Serializable{
 		this.dia_semana = Dia_semana.fromString(dia_semana);
 		this.hora_inicio = hora_inicio;
 		this.hora_fim = hora_fim;
-		this.turma_disciplina.setTurma(turma_disciplina.getTurma());
-		this.turma_disciplina.setDisciplina(turma_disciplina.getDisciplina());
+		this.turma_disciplina = turma_disciplina;
 	}
 
 	public Long getId_horario() {
