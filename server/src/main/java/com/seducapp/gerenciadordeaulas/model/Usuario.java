@@ -18,9 +18,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Collection;
+import java.util.Collections;
+
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable{
+public class Usuario implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -41,6 +47,11 @@ public class Usuario implements Serializable{
 	@OneToMany(mappedBy = "usuario")
 	@JsonIgnore
 	private List<Professor> professores = new ArrayList<>();
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() { 
+		return Collections.singletonList(new SimpleGrantedAuthority(tipo_usuario.name()));
+	}
 	
 	public Usuario() {
 		
@@ -127,10 +138,33 @@ public class Usuario implements Serializable{
 		return Objects.equals(id_usuario, other.id_usuario);
 	}
 
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.cpf; // Usando CPF como username
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
