@@ -102,6 +102,10 @@ public class Aluno implements Serializable{
 		this.turma = turma;
 	}
 
+	public Set<Chamada> getChamadas() {
+		return chamadas;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id_aluno);

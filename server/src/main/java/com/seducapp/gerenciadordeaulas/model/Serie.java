@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seducapp.gerenciadordeaulas.enums.Grau_ensino;
 
 import jakarta.persistence.Column;
@@ -31,6 +32,7 @@ public class Serie implements Serializable{
 	private Grau_ensino grau_ensino;
 	
 	@OneToMany(mappedBy = "serie")
+	@JsonIgnore
 	private List<Turma> turma = new ArrayList<>();
 	
 	public Serie() {

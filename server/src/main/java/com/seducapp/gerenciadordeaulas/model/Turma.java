@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class Turma implements Serializable{
 	private String nome_turma;
 	
 	@OneToMany(mappedBy = "turma")
+	@JsonIgnore
 	private List<Aluno> alunos = new ArrayList<>();
 	
 	@ManyToOne
@@ -37,7 +40,8 @@ public class Turma implements Serializable{
 	@JoinColumn(name = "id_serie")
 	private Serie serie;
 	
-	@OneToMany(mappedBy = "id.turma")
+	@OneToMany(mappedBy = "turma")
+	@JsonIgnore
 	private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();
 	
 	public Turma() {

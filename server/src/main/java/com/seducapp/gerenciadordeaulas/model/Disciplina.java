@@ -1,6 +1,5 @@
 package com.seducapp.gerenciadordeaulas.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -14,15 +13,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "disciplina")
-public class Disciplina implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_disciplina;
-	private String nome_disciplina;
-	
-	@OneToMany(mappedBy = "id.disciplina")
+public class Disciplina {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_disciplina;
+    private String nome_disciplina;
+    
+    @OneToMany(mappedBy = "disciplina")
 	private Set<Turma_disciplina> turma_disciplinas = new HashSet<>();
 	
 	public Disciplina() {
@@ -70,12 +67,4 @@ public class Disciplina implements Serializable{
 		Disciplina other = (Disciplina) obj;
 		return Objects.equals(id_disciplina, other.id_disciplina);
 	}
-
-	public void setId(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 }

@@ -31,7 +31,7 @@ public class DisciplinaService {
 
     // Método para atualizar uma disciplina existente
     public Disciplina update(Long id, Disciplina disciplinaAtualizada) {
-        disciplinaAtualizada.setId(id);
+        disciplinaAtualizada.setId_disciplina(id);;
         return disciplinaRepository.save(disciplinaAtualizada);
     }
 
