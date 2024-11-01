@@ -1,5 +1,4 @@
 package com.seducapp.gerenciadordeaulas.services;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +7,18 @@ import com.seducapp.gerenciadordeaulas.model.Usuario;
 import com.seducapp.gerenciadordeaulas.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
+    
     // Busca um usuário pelo CPF
     public Optional<Usuario> findByCpf(String cpf) {
         return usuarioRepository.findByCpf(cpf);
     }
 }
+
+
+
 
 
