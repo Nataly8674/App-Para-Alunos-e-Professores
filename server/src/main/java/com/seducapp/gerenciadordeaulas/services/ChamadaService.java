@@ -1,14 +1,25 @@
 package com.seducapp.gerenciadordeaulas.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.seducapp.gerenciadordeaulas.dto.*;
-import com.seducapp.gerenciadordeaulas.model.*;
-import com.seducapp.gerenciadordeaulas.repository.*;
+
+import com.seducapp.gerenciadordeaulas.dto.AlunoPresencaDTO;
+import com.seducapp.gerenciadordeaulas.dto.ChamadaResponseDTO;
+import com.seducapp.gerenciadordeaulas.dto.PresencaAlunoDTO;
+import com.seducapp.gerenciadordeaulas.dto.RealizarChamadaRequestDTO;
+import com.seducapp.gerenciadordeaulas.model.Aluno;
+import com.seducapp.gerenciadordeaulas.model.Chamada;
+import com.seducapp.gerenciadordeaulas.model.Horario;
+import com.seducapp.gerenciadordeaulas.repository.AlunoRepository;
+import com.seducapp.gerenciadordeaulas.repository.ChamadaRepository;
+import com.seducapp.gerenciadordeaulas.repository.HorarioRepository;
+
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -75,6 +86,22 @@ public class ChamadaService {
             .map(this::convertToChamadaResponseDTO)
             .collect(Collectors.toList());
     }
+    
+    @Transactional(readOnly = true)
+    public boolean verificarChamadaExistente(Long idHorario, LocalDate data) {
+        return chamadaRepository.existsByHorarioIdAndData(idHorario, data);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ChamadaResponseDTO> buscarPresencasAluno(Long idAluno) {
+        Aluno aluno = alunoRepository.findById(idAluno)
+            .orElseThrow(() -> new EntityNotFoundException("Aluno não encontrado"));
+
+        return aluno.getChamadas().stream()
+            .map(this::convertToChamadaResponseDTO)
+            .collect(Collectors.toList());
+    }
+
 
     private ChamadaResponseDTO convertToChamadaResponseDTO(Chamada chamada) {
         ChamadaResponseDTO dto = new ChamadaResponseDTO();
