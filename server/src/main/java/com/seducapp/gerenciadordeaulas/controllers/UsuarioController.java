@@ -4,6 +4,9 @@ import com.seducapp.gerenciadordeaulas.model.Usuario;
 import com.seducapp.gerenciadordeaulas.services.UsuarioService;
 import com.seducapp.gerenciadordeaulas.dto.LoginDTO; 
 import jakarta.validation.Valid;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +22,8 @@ public class UsuarioController {
 
     // Endpoint para buscar usuário por CPF
     @GetMapping("/{cpf}")
-    public ResponseEntity<Usuario> buscarPorCpf(@PathVariable String cpf) {
-        Usuario usuario = usuarioService.findByCpf(cpf);
+    public ResponseEntity<Optional<Usuario>> buscarPorCpf(@PathVariable String cpf) {
+        Optional<Usuario> usuario = usuarioService.findByCpf(cpf);
         if (usuario == null) {
             return ResponseEntity.notFound().build();
         }

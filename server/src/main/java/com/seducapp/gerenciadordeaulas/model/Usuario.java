@@ -168,4 +168,11 @@ public class Usuario implements UserDetails, Serializable {
     public boolean isEnabled() {
         return true;
     }
+
+	public UserDetails orElseThrow(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

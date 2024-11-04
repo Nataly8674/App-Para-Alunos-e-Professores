@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +27,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable() // Desativa CSRF para facilitar testes
+                .cors().and() // Habilita CORS
                 .authorizeRequests()
                 .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll() // Permite acesso ao endpoint de login
                 .anyRequest().authenticated(); // Protege todos os outros endpoints
@@ -38,6 +41,20 @@ public class SecurityConfig {
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(usuarioService).passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
+    }
+
+    // Configuração global de CORS
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**") // Aplica CORS a todas as rotas
+                        .allowedOrigins("*") // Permite todas as origens (você pode restringir para um domínio específico)
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
+                        .allowedHeaders("*"); // Permite todos os headers
+            }
+        };
     }
 }
 
