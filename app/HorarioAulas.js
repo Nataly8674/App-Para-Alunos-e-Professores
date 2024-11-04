@@ -6,9 +6,9 @@ const { width } = Dimensions.get('window'); // Importando as dimensões da tela
 
 export default function HorarioAulas({ navigation }) {
   const [isExpanded1, setIsExpanded1] = useState(false); // Estado para controlar expansão da caixa 1
-  const [isExpanded2, setIsExpanded2] = useState(false); // Estado para controlar expansão da caixa 2
-  const [isExpanded3, setIsExpanded3] = useState(false); // Estado para controlar expansão da caixa 3
-  const [isExpanded4, setIsExpanded4] = useState(false); // Estado para controlar expansão da caixa 4
+  const [isExpanded2, setIsExpanded2] = useState(false); 
+  const [isExpanded3, setIsExpanded3] = useState(false); 
+  const [isExpanded4, setIsExpanded4] = useState(false); 
 
   return (
     <View style={styles.container}>
@@ -58,6 +58,16 @@ export default function HorarioAulas({ navigation }) {
             {isExpanded1 && (
               <View style={styles.conteudoOculto}>
                 <Text style={styles.textoConteudoOculto}>Exemplo de conteúdo a ser ministrado na aula de Português.</Text>
+                
+                <View style={styles.botoesConteudoOculto}>
+                <TouchableOpacity onPress={() => navigation.navigate("TelaChamada")}>
+                  <Text style={styles.realizarChamada}>Realizar Chamada</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.Salvar}>Salvar</Text>
+                </TouchableOpacity>
+                </View>
+
               </View>
             )}
           </View>
@@ -82,9 +92,20 @@ export default function HorarioAulas({ navigation }) {
 
             {/* Conteúdo oculto */}
             {isExpanded2 && (
-              <View style={styles.conteudoOculto2}>
-                <Text style={styles.textoConteudoOculto2}>Exemplo de conteúdo a ser ministrado na aula de Matemática.</Text>
+              <View style={styles.conteudoOculto}>
+              <Text style={styles.textoConteudoOculto}>Exemplo de conteúdo a ser ministrado na aula de Matemática.</Text>
+              
+              <View style={styles.botoesConteudoOculto}>
+              <TouchableOpacity onPress={() => navigation.navigate("TelaChamada")}>
+                <Text style={styles.realizarChamada}>Realizar Chamada</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.Salvar}>Salvar</Text>
+              </TouchableOpacity>
               </View>
+
+            </View>
+              
             )}
           </View>
         
@@ -113,8 +134,18 @@ export default function HorarioAulas({ navigation }) {
             {/* Conteúdo oculto */}
             {isExpanded3 && (
               <View style={styles.conteudoOculto}>
-                <Text style={styles.textoConteudoOculto}>Exemplo de conteúdo a ser ministrado na aula de Português.</Text>
+              <Text style={styles.textoConteudoOculto}>Exemplo de conteúdo a ser ministrado na aula de Geografia.</Text>
+              
+              <View style={styles.botoesConteudoOculto}>
+              <TouchableOpacity onPress={() => navigation.navigate("TelaChamada")}>
+                <Text style={styles.realizarChamada}>Realizar Chamada</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.Salvar}>Salvar</Text>
+              </TouchableOpacity>
               </View>
+
+            </View>
             )}
           </View>
 
@@ -138,9 +169,19 @@ export default function HorarioAulas({ navigation }) {
 
             {/* Conteúdo oculto */}
             {isExpanded4 && (
-              <View style={styles.conteudoOculto2}>
-                <Text style={styles.textoConteudoOculto2}>Exemplo de conteúdo a ser ministrado na aula de Matemática.</Text>
+              <View style={styles.conteudoOculto}>
+              <Text style={styles.textoConteudoOculto}>Exemplo de conteúdo a ser ministrado na aula de Historia.</Text>
+              
+              <View style={styles.botoesConteudoOculto}>
+              <TouchableOpacity onPress={() => navigation.navigate("TelaChamada")}>
+                <Text style={styles.realizarChamada}>Realizar Chamada</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.Salvar}>Salvar</Text>
+              </TouchableOpacity>
               </View>
+
+            </View>
             )}
           </View>
 
@@ -207,6 +248,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
     paddingLeft: 50,
+    right: 5,
   },
 
   DiaDaSemana: {
@@ -233,6 +275,7 @@ const styles = StyleSheet.create({
 
   caixaMateria1Expandida: {
     height: 'auto',
+
   },
 
   textoMateria1: {
@@ -272,6 +315,19 @@ const styles = StyleSheet.create({
     left: 10,
   },
 
+  realizarChamada:{
+    color: '#FF0000',
+    top: 100,
+    textDecorationLine: 'underline',
+  },
+
+  Salvar:{
+    color: '#229A00',
+    top: 81,
+    left:200,
+    textDecorationLine: 'underline',
+  },
+
   /*Separação Materia do Horario - Caixa Materia 1*/
   linha1: {
     height: 23,
@@ -292,6 +348,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#0073e6',
     fontFamily: 'Nunito-VariableFont_wght',
+  },
+
+  botoesConteudoOculto:{
+    fontFamily: 'Nunito-VariableFont_wght',
+    fontSize: 14,
+
   },
 
   //----------------------------------------------------------------
