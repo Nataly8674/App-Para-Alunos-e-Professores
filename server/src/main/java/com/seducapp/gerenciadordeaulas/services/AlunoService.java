@@ -1,24 +1,18 @@
 package com.seducapp.gerenciadordeaulas.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seducapp.gerenciadordeaulas.model.Aluno;
-import com.seducapp.gerenciadordeaulas.model.Turma;
 import com.seducapp.gerenciadordeaulas.repository.AlunoRepository;
-import com.seducapp.gerenciadordeaulas.repository.TurmaRepository;
 
 @Service
 public class AlunoService {
 
     @Autowired
     private AlunoRepository alunoRepository;
-    
-    @Autowired
-    private TurmaRepository turmaRepository;
     
     // Retorno de todos os alunos que foram cadastrados
     public List<Aluno> findAll() {
